@@ -2,7 +2,10 @@ cmake_minimum_required(VERSION 3.2)
 
 project(helloworld VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
-cmake_policy(SET CMP0074 NEW)
+if(CMAKE_VERSION VERSION_GREATER_EQUAL "3.12")
+    message(STATUS "CMake version ${CMAKE_VERSION}")
+    cmake_policy(SET CMP0074 NEW)
+endif ()
 
 if(STATIC_LINK_LIBS)
 	set (Boost_USE_STATIC_LIBS ON)
